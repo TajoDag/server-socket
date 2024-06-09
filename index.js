@@ -14,7 +14,9 @@ const io = new Server(server, {
 });
 
 let onlineUsers = [];
-
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
 io.on("connection", (socket) => {
   // console.log("New client connected", socket.id);
 
@@ -54,7 +56,7 @@ io.on("connection", (socket) => {
 
 const PORT = process.env.PORT || 3000;
 
-io.listen(PORT);
-// server.listen(PORT, () => {
-//   console.log(`Server running on port ${PORT}`);
-// });
+// io.listen(PORT);
+server.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
