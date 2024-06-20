@@ -105,9 +105,12 @@ require("dotenv").config();
 const app = express();
 const server = http.createServer(app);
 
+const CLIENT_PORT = process.env.CLIENT_PORT;
+const ADMIN_PORT = process.env.ADMIN_PORT;
+
 const io = new Server(server, {
   cors: {
-    origin: "*",
+    origin: [CLIENT_PORT, ADMIN_PORT],
     methods: ["GET", "POST"],
   },
 });
